@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu } from 'lucide-react'
 import { ModalNavigation } from "@/components/modal-navigation"
@@ -12,7 +12,9 @@ import { FeedbackSection } from "@/components/feedback-section"
 import { LoadingScreen } from "@/components/loading-screen"
 import { HeroSection } from "@/components/hero-section"
 import { ContactSection } from "@/components/contact-section"
-import { FooterSection } from "@/components/footer-section"
+import { Footer } from "@/components/footer-section"
+import { SignInModal } from "@/components/sign-in-modal"
+import { StatsSection } from "@/components/stats-section"
 
 interface AwardProps {
   count: number
@@ -20,8 +22,8 @@ interface AwardProps {
 }
 
 const Award: React.FC<AwardProps> = ({ count, label }) => (
-  <div className="flex items-center gap-4">
-    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4F46E5] text-white">
+  <div className="flex items-center gap-4 animate-fade-in">
+    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#000] text-white">
       <span className="text-lg font-medium">{count}</span>
     </div>
     <span className="text-lg text-black">{label}</span>
@@ -30,6 +32,22 @@ const Award: React.FC<AwardProps> = ({ count, label }) => (
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isSignInOpen, setIsSignInOpen] = useState(false)
+  const [currentAwardIndex, setCurrentAwardIndex] = useState(0)
+
+  const awards = [
+    { count: 15, label: "Website Awards" },
+    { count: 500, label: "Satisfied Customers" },
+    { count: 20, label: "Years on the Market" },
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAwardIndex((prev) => (prev + 1) % awards.length)
+    }, 2000) // Total time for each award (1.5s visible + 0.5s transition)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <>
@@ -44,6 +62,13 @@ export default function Page() {
           >
             Get in touch
           </Button>
+          <Button 
+              variant ="secondary"
+              onClick={() => setIsSignInOpen(true)}
+             className="border-[#4F46E5] bg-transparent text-black hover:bg-[#4F46E5] hover:text-white"
+            >
+              Sign In
+            </Button>
           <Button 
             variant="ghost" 
             size="icon"
@@ -65,7 +90,12 @@ export default function Page() {
         </h1>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-          <Award count={15} label="Website Awards" />
+          <div className="h-[48px]">
+            <Award 
+              count={awards[currentAwardIndex].count} 
+              label={awards[currentAwardIndex].label} 
+            />
+          </div>
           
           <p className="text-xl text-black md:max-w-md lg:max-w-lg">
             We build engaging websites, brands & innovative e-commerce solutions.
@@ -82,16 +112,21 @@ export default function Page() {
       <DigitalPartner/>
      
       <PartnersSection/>
+      <StatsSection/>
       <HeroSection/>
       <ContactSection/>
     <FeedbackSection/>
-    <FooterSection/>
+    <Footer/>
   
 
       <ModalNavigation 
         isOpen={isOpen} 
         onClose={() => setIsOpen(false)} 
       />
+       <SignInModal
+          isOpen={isSignInOpen}
+          onClose={() => setIsSignInOpen(false)}
+        />
     </div>
     </>
   )

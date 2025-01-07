@@ -2,27 +2,38 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { cva } from "class-variance-authority"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'ghost'
+  variant?: 'default' | 'outline' | 'ghost' | 'secondary'
   size?: 'default' | 'lg' | 'icon'
 }
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        outline: "border border-input hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        lg: "h-11 px-8",
+        icon: "h-10 w-10",
+      },
+    }
+  }
+)
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', ...props }, ref) => {
     return (
       <button
         className={cn(
-          "inline-flex items-center justify-center rounded-md font-medium transition-colors",
-          // Variant styles
-          variant === 'default' && "bg-primary text-primary-foreground hover:bg-primary/90",
-          variant === 'outline' && "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-          variant === 'ghost' && "hover:bg-accent hover:text-accent-foreground",
-          // Size styles
-          size === 'default' && "h-10 px-4 py-2",
-          size === 'lg' && "h-11 px-8",
-          size === 'icon' && "h-10 w-10",
-          className
+          buttonVariants({ variant, size, className })
         )}
         ref={ref}
         {...props}

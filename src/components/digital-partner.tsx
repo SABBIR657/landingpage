@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export function DigitalPartner() {
   return (
@@ -6,43 +7,54 @@ export function DigitalPartner() {
       <section className="bg-white px-4 py-24 md:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-5xl font-bold text-black md:text-6xl lg:text-7xl">
-                Your Digital Partner
-              </h2>
-              <p className="mt-8 text-xl text-black/70 leading-relaxed max-w-xl">
-                We partner with companies of all sizes to solve complex business challenges and define their digital strategies and objectives that deliver results. We help bring ideas to life and create brands, websites & digital products that work.
-              </p>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div>
+                <h2 className="text-5xl font-bold text-black md:text-6xl lg:text-7xl">
+                  Your Digital Partner
+                </h2>
+                <p className="mt-8 text-xl text-black/70 leading-relaxed max-w-xl">
+                  We partner with companies of all sizes to solve complex business challenges and define their digital strategies and objectives that deliver results. We help bring ideas to life and create brands, websites & digital products that work.
+                </p>
 
-              <div className="mt-12 flex items-center gap-4">
-                <div className="flex -space-x-4">
-                  <Image
-                    src="/images/BBC.jpg"
-                    alt="BBC"
-                    width={48}
-                    height={48}
-                    className="rounded-full border-2 border-white bg-white"
-                  />
-                  <Image
-                    src="/images/BMW.jpeg"
-                    alt="BMW"
-                    width={48}
-                    height={48}
-                    className="rounded-full border-2 border-white bg-white"
-                  />
-                  <Image
-                    src="/images/costa.png"
-                    alt="Costa"
-                    width={48}
-                    height={48}
-                    className="rounded-full border-2 border-white bg-white"
-                  />
+                <div className="mt-12 flex items-center gap-4">
+                  <div className="flex -space-x-4">
+                    <Image
+                      src="/images/BBC.jpg"
+                      alt="BBC"
+                      width={48}
+                      height={48}
+                      className="rounded-full border-2 border-white bg-white"
+                    />
+                    <Image
+                      src="/images/BMW.jpeg"
+                      alt="BMW"
+                      width={48}
+                      height={48}
+                      className="rounded-full border-2 border-white bg-white"
+                    />
+                    <Image
+                      src="/images/costa.png"
+                      alt="Costa"
+                      width={48}
+                      height={48}
+                      className="rounded-full border-2 border-white bg-white"
+                    />
+                  </div>
+                  <span className="text-black/60">Brands who've trusted us...</span>
                 </div>
-                <span className="text-black/60">Brands who've trusted us...</span>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-[#ecf1f4] rounded-3xl p-8 max-w-md ml-auto">
+            <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-[#ecf1f4] rounded-3xl p-8 max-w-md ml-auto"
+            >
               <div className="flex flex-col divide-y divide-black/10">
                 <div className="pb-8 text-center">
                   <p className="text-6xl font-bold text-black">20</p>
@@ -53,7 +65,7 @@ export function DigitalPartner() {
                   <p className="mt-2 text-black/60">Satisfied Customers</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
