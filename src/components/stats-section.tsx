@@ -6,20 +6,24 @@ import { useEffect } from 'react'
 
 function AnimatedNumber({ value }: { value: number }) {
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.1,
     triggerOnce: true,
   })
 
   const springConfig = {
     damping: 30,
     stiffness: 200,
+    mass: 1,
+    duration: 2,
   }
 
   const spring = useSpring(0, springConfig)
 
   useEffect(() => {
     if (inView) {
-      spring.set(value)
+      setTimeout(() => {
+        spring.set(value)
+      }, 100)
     }
   }, [spring, value, inView])
 
