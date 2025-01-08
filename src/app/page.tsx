@@ -82,12 +82,15 @@ export default function Page() {
       </header>
 
       <main className="mx-auto mt-24 max-w-7xl">
-        <h1 className="text-5xl font-bold leading-tight tracking-tight text-black md:text-6xl lg:text-7xl">
+        <h1 className="text-5xl font-bold leading-tight tracking-tight text-black md:text-6xl lg:[font-size:119.04px]">
           Crafting{" "}
           <span className="text-[#4F46E5]">Digital</span>
           <br />
           Experiences
         </h1>
+
+
+
 
         <div className="mt-16 flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div className="h-[48px]">

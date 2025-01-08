@@ -1,8 +1,30 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
+import { useEffect, useRef } from "react"
 
 export function ContactSection() {
+  const rightColumnRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0')
+          entry.target.classList.add('animate-fade-in')
+          observer.unobserve(entry.target)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (rightColumnRef.current) {
+      observer.observe(rightColumnRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="bg-[#fff]  px-4 py-24 md:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -21,7 +43,10 @@ export function ContactSection() {
           </div>
 
           {/* Right Column */}
-          <div className="rounded-3xl bg-[#4F46E5]  p-8 lg:p-12">
+          <div 
+            ref={rightColumnRef}
+            className="rounded-3xl bg-[#4F46E5] p-8 lg:p-12 opacity-0"
+          >
             <h2 className="text-3xl font-medium text-white lg:text-4xl">
               Let's start with a conversation about how we can help you! Get in touch, we're a nice bunch.
             </h2>
