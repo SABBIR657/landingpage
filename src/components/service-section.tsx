@@ -103,7 +103,7 @@ export function ServicesSection() {
               Creative Agency
             </h2>
             <p className="mt-8 text-xl text-white/80 leading-relaxed">
-              We're an award-winning creative agency based in London, focused on E-Commerce, Web Design London, Digital Products, Branding and SEO.
+              We are an award-winning creative agency based in London, focused on E-Commerce, Web Design London, Digital Products, Branding and SEO.
             </p>
           </div>
 

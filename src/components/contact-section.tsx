@@ -48,11 +48,11 @@ export function ContactSection() {
             className="rounded-3xl bg-[#4F46E5] p-8 lg:p-12 opacity-0"
           >
             <h2 className="text-3xl font-medium text-white lg:text-4xl">
-              Let's start with a conversation about how we can help you! Get in touch, we're a nice bunch.
+              Lets start with a conversation about how we can help you! Get in touch, we are a nice bunch.
             </h2>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button size="lg" className="bg-[#fff] text-black hover:bg-[#4338CA]">
-                Let's talk
+                Lets talk
               </Button>
               <Button 
                 size="lg" 

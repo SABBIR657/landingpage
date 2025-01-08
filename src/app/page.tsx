@@ -44,10 +44,10 @@ export default function Page() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentAwardIndex((prev) => (prev + 1) % awards.length)
-    }, 2000) // Total time for each award (1.5s visible + 0.5s transition)
+    }, 2000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [awards.length])
 
   return (
     <>

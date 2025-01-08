@@ -44,7 +44,7 @@ export function DigitalPartner() {
                       className="rounded-full border-2 border-white bg-white"
                     />
                   </div>
-                  <span className="text-black/60">Brands who've trusted us...</span>
+                  <span className="text-black/60">Brands who have trusted us...</span>
                 </div>
               </div>
             </motion.div>

@@ -38,10 +38,10 @@ export function PartnersSection() {
     return partners.slice(start, start + 5)
   }
 
-  const getNextGroup = () => {
-    const start = ((currentGroup + 1) * 5) % partners.length
-    return partners.slice(start, start + 5)
-  }
+//   const getNextGroup = () => {
+//     const start = ((currentGroup + 1) * 5) % partners.length
+//     return partners.slice(start, start + 5)
+//   }
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-24 md:px-6 lg:px-8">

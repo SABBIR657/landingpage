@@ -67,7 +67,7 @@ export function FeedbackSection() {
               Client Feedback
             </h2>
             <p className="mt-8 text-xl text-white/60">
-              We're collaborators - We build tight-knit partnerships with our clients.
+              We are collaborators - We build tight-knit partnerships with our clients.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export function FeedbackSection() {
               className="rounded-3xl bg-white/5 p-8 backdrop-blur-sm"
             >
               <p className="text-2xl font-medium leading-relaxed md:text-3xl">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </p>
               <div className="mt-8 flex items-center justify-between">
                 <div className="flex items-center gap-4">
